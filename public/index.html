@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <!-- SEO básico -->
+  <title>tartarugas marinhas — tartarugas marinhas</title>
+  <meta name="description" content="[[RESUMO_CURTO]]" />
+
+  <!-- Paleta marinha / tartaruga -->
+  <style>
+    :root {
+      --sea-dark: #021827;
+      --sea-mid: #043b4f;
+      --sea-light: #0ba6b9;
+      --sea-soft: #0f8093;
+      --turtle-green: #63d494;
+      --shell-brown: #2f5b4a;
+      --sand: #f5f0df;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #063149 0%, #02101c 55%, #01070a 100%);
+      color: #f4fbff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    header {
+      background: linear-gradient(90deg, rgba(2,19,33,0.95), rgba(5,57,77,0.95));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+    }
+
+    header .brand strong {
+      color: var(--turtle-green);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    header .nav-links a {
+      color: #cdefff;
+    }
+
+    header .nav-links a:hover {
+      color: var(--turtle-green);
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2.75rem;
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-text {
+      flex: 1 1 320px;
+      min-width: 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(3, 98, 122, 0.45);
+      border: 1px solid rgba(99, 212, 148, 0.4);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #e3fffb;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-badge span {
+      font-size: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 3.1vw, 2.8rem);
+      line-height: 1.05;
+      margin: 0 0 0.4rem;
+    }
+
+    .hero h1 span {
+      color: var(--turtle-green);
+    }
+
+    .hero h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #c2f4ff;
+      margin: 0 0 0.85rem;
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      color: #e2f7ff;
+      max-width: 34rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--turtle-green), #7be2ff);
+      color: #022024;
+      box-shadow: 0 10px 25px rgba(5, 158, 190, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 32px rgba(5, 158, 190, 0.6);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: #e6fbff;
+      border: 1px solid rgba(196, 246, 255, 0.5);
+      box-shadow: none;
+    }
+
+    .btn.ghost:hover {
+      background: rgba(4, 87, 110, 0.7);
+      box-shadow: 0 10px 22px rgba(1, 32, 40, 0.6);
+    }
+
+    .hero-media {
+      flex: 0 1 360px;
+      max-width: 420px;
+      position: relative;
+      margin-inline: auto;
+    }
+
+    .hero-media::before,
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(18px);
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .hero-media::before {
+      width: 130%;
+      height: 60%;
+      left: -10%;
+      bottom: -10%;
+      background: radial-gradient(circle at 10% 0%, rgba(11,166,185,0.9), transparent 60%);
+    }
+
+    .hero-media::after {
+      width: 70%;
+      height: 55%;
+      right: -8%;
+      top: -4%;
+      background: radial-gradient(circle at 90% 0%, rgba(99,212,148,0.9), transparent 60%);
+    }
+
+    .hero-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 3px solid rgba(191, 252, 221, 0.7);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(2, 41, 49, 0.9);
+    }
+
+    .hero-tag {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(3, 42, 56, 0.92);
+      border: 1px solid rgba(191, 252, 221, 0.6);
+      font-size: 0.7rem;
+      color: #e9fff6;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-tag span {
+      font-size: 0.9rem;
+    }
+
+    section.fade-in {
+      background: rgba(0, 22, 34, 0.85);
+      border-radius: 20px;
+      padding: 1.75rem 1.5rem 2rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(140, 229, 255, 0.08);
+    }
+
+    section.fade-in header h2 {
+      color: var(--turtle-green);
+    }
+
+    .gallery figure {
+      background: radial-gradient(circle at top, rgba(10, 110, 139, 0.5), rgba(1, 15, 23, 0.95));
+      border-radius: 16px;
+      padding: 0.65rem;
+      border: 1px solid rgba(134, 225, 255, 0.16);
+    }
+
+    .gallery img {
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .gallery figcaption {
+      color: #d6faff;
+    }
+
+    footer {
+      color: #9dc9d7;
+    }
+
+    footer a {
+      color: var(--turtle-green);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 2.5rem;
+      }
+      .hero-media {
+        order: -1;
+      }
+    }
+  </style>
+
+  <!-- Bibliotecas -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header role="banner">
+    <div class="wrap">
+      <nav aria-label="Navegação principal">
+        <div class="brand" aria-label="Marca da página">
+          <span aria-hidden="true"></span>
+          <strong>Mar Profundo</strong>
+        </div>
+
+        <div class="nav-links" role="navigation">
+          <a href="#curiosidades">Curiosidades</a>
+          <a href="#fatos">Fatos</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="controls">
+          <button id="toggleTheme" class="btn ghost" aria-pressed="false" aria-label="Alternar modo claro e escuro">🌙</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="wrap" role="main">
+    <!-- HERO -->
+    <section class="hero fade-in" aria-labelledby="titulo-hero">
+      <div class="hero-text">
+        <p class="hero-badge">
+          <span>🐢</span>
+          Guardiãs do oceano
+        </p>
+        <h1 id="titulo-hero"><span>Tartarugas marinhas</span></h1>
+        <h2>Guardando o mar, uma tartaruga por vez.</h2>
+        <p>Este projeto apresenta curiosidades, fatos científicos e recursos interativos sobre tartarugas marinhas, mostrando por que são importantes para o equilíbrio dos oceanos.</p>
+
+        <div class="actions" role="group" aria-label="Ações principais">
+          <!-- Botão obrigatório: Reconhecimento Facial -->
+          <button id="abrirIA" class="btn">Reconhecimento Facial</button>
+
+          <!-- Botão de abrir chatbot escondido no hero -->
+          <button id="btnAbrirChatbotHero" class="btn ghost" aria-label="Abrir chatbot" style="display:none;">
+            Abrir Chatbot
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-media" aria-hidden="false">
+        <img
+          src="https://i.pinimg.com/474x/a9/d8/3c/a9d83c0b0456f74027d7d9342c5b376f.jpg"
+          alt="Tartaruga marinha nadando em um mar azul, com raios de luz atravessando a água"
+        />
+        <div class="hero-tag">
+          <span>🐢</span>
+          Tartaruga marinha em seu habitat
+        </div>
+      </div>
+    </section>
+    <!-- CURIOSIDADES -->
+    <section id="curiosidades" aria-labelledby="titulo-curiosidades" class="fade-in">
+      <header>
+        <h2 id="titulo-curiosidades">Curiosidades</h2>
+        <p>Descobertas rápidas sobre o tema do fundo do mar.</p>
+      </header>
+      <ul class="facts-list" role="list">
+        <!-- TODO: Preencher de 3 a 5 curiosidades -->
+        <li><div class="text">As tartarugas são répteis pertencentes à ordem Testudines, conhecidos por seu casco protetor rígido. Esses animais existem há milhões de anos, evidenciando sua incrível capacidade de adaptação. Além disso, há uma diversidade impressionante de espécies: são 250 aquáticas, 60 terrestres e 7 marinhas (5 destas ocorrem no litoral brasileiro: a tartaruga-cabeçuda, a tartaruga-de-pente, a tartaruga-verde, a tartaruga-oliva e a tartaruga-de-couro).
+
+</div></li>
+        <li><div class="text">As tartarugas são animais que impressionam por sua longevidade. Algumas espécies, como as tartarugas-gigantes-de-galápagos, podem viver mais de 100 anos. A expectativa de vida longa desses seres vivos é atribuída ao metabolismo lento e à capacidade de se adaptar a diferentes condições ambientais.
+
+</div></li>
+        <li><div class="text">Algumas espécies, como a tartaruga-pintada, podem respirar debaixo d’água. Isso porque elas conseguem extrair oxigênio da água por meio de um órgão chamado cloaca. Esse método de respiração auxilia na sobrevivência em ambientes aquáticos, especialmente durante longos períodos de submersão.</div></li>
+        <li><div class="text">O casco é uma característica bem distinta das tartarugas. Essa estrutura serve como proteção contra predadores. Além disso, é composta por 50 a 60 ossos fundidos, incluindo as costelas e a espinha, abrigando órgãos vitais destes animais.</div></li>
+        <li><div class="text">Em geral, as tartarugas marinhas têm uma habilidade incrível de navegação. Conforme um estudo publicado na revista Current Biology, elas utilizam o campo magnético da Terra como uma espécie de “GPS natural”. Assim, elas conseguem migrar milhares de quilômetros para retornar às praias onde nasceram para desovar.</div></li>
+      </ul>
+    </section>
+
+    <!-- FATOS/CIÊNCIA -->
+    <section id="fatos" aria-labelledby="titulo-fatos" class="fade-in">
+      <header>
+        <h2 id="titulo-fatos">Fatos e Ciência</h2>
+        <p>Três pontos científicos para entender melhor.</p>
+      </header>
+      <div class="cards" role="list">
+        <!-- TODO: Preencher os cards com fatos -->
+        <article class="card" aria-label="Fato científico 1" role="listitem">
+          <h3>Curiosidades sobre tartarugas marinhas:</h3>
+          <p>
+Migração: Algumas espécies, como a tartaruga-de-couro, podem migrar milhares de quilômetros. Uma fêmea já percorreu quase \(21.000\) km em \(647\) dias.  
+
+Imersão: Podem ficar submersas por longos períodos e até dormir no fundo do mar, prendendo a respiração por até sete horas enquanto descansam. 
+
+Ameaças: A maioria das espécies de tartarugas marinhas está ameaçada de extinção, e muitas se alimentam de sacos plásticos, que se confundem com águas-vivas. 
+
+Reprodução: As fêmeas saem da água para depositar seus ovos na areia. Estima-se que apenas um em cada mil filhotes sobreviva até a idade adulta. 
+
+Um site é um conjunto de páginas web interconectadas, acessíveis através da internet por meio de um endereço (domínio). Ele serve como um "espaço" online para diversas finalidades.
+</p>
+        </article>
+
+        <article class="card" aria-label="Fato científico 2" role="listitem">
+          <h3>Fato Sobre As Tartarugas: </h3>
+          <p>Longevidade:as tartarugas podem viver até 100 anos ou mais, dependendo da espécie.
+
+Casco:O casco é uma extensão de esqueleto, composto por mais de 50 ossos, que incluem a caixa torácica e a coluna vertebral. Ele funciona como um escudo protetor,e algumas tartarugas podem retrair a cabeça para dentro dele.
+
+Sem dentes:Elas não têm dentes.Em vez disso, possuem um bico de queratina dura que usam para cortar os alimentos, que é engolido sem mastigar.
+
+Audição: Jabutis não têm orelhas visíveis, mas escutam sons graves, e sentem vibrações no chão através do ouvido interno.
+
+Sexo Determinado Pela Temperatura:A temperatura do ninho de ovos determina o sexo dos filhotes. Temperaturas mais altas geralmente produzem mais fêmeas, enquanto temperaturas mais baixas produzem mais machos.
+</p>
+        </article>
+
+        <article class="card" aria-label="Fato científico 3" role="listitem">
+          <h3>Respiração subaquática</h3>
+          <p>Algumas espécies, como a tartaruga-pintada, podem respirar debaixo da água. Isso porque elas conseguem extrair oxigênio da água por meio de um órgão chamado cloaca. Esse método de respiração auxilia na sobrevivência em ambientes aquáticos, especialmente durante longos períodos de submersão.
+</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" aria-labelledby="titulo-galeria" class="fade-in">
+      <header>
+        <h2 id="titulo-galeria">Galeria</h2>
+        <p>Imagens relacionadas ao tema com pequenas legendas.</p>
+      </header>
+
+      <div class="gallery" role="list">
+        <!-- TODO: Adicionar de 3 a 6 imagens na galeria. Duplique/remova figuras conforme necessário. -->
+         </figure>
+        <figure role="listitem">
+          <img src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/106BF/production/_127336276_leatherbackseaturtle.jpg.webp" alt="Foto 6 relacionada a [[TEMA_DO_PROJETO]]" />
+          <figcaption>tartaruga indo nada no fundo do mar</figcaption>
+        </figure>
+         </figure>
+        <figure role="listitem">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQelbiBDTgPwXZRVVO9wKGeFWKMbL-SZw0qZw&s" alt="Foto 6 relacionada a [[TEMA_DO_PROJETO]]" />
+          <figcaption>tartaruga voltando para o mar</figcaption>
+        </figure>
+         </figure>
+        <figure role="listitem">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi5BzvkOxEU1zrlivcvcsZvulnE4fQ2LZFhw&s" alt="Foto 6 relacionada a [[TEMA_DO_PROJETO]]" />
+          <figcaption>tartaruga nadando</figcaption>
+        </figure>
+         </figure>
+        <figure role="listitem">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3R--T88HHIW4a7-lTXsswYefUBoTZRZ7d_Q&s" alt="Foto 6 relacionada a [[TEMA_DO_PROJETO]]" />
+          <figcaption>tartaruga presa na rede</figcaption>
+        </figure>
+         </figure>
+        <figure role="listitem">
+          <img src="data:image/jpeg;base64,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" alt="Foto 6 relacionada a [[TEMA_DO_PROJETO]]" />
+          <figcaption>tartaruga nadando em agua cristalina</figcaption>
+        </figure>
+         </figure>
+        <figure role="listitem">
+          <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2l-VaHXbrMPcVdSsUVXOn0X5-sRKcyFJpQ&s" alt="Foto 6 relacionada a [[TEMA_DO_PROJETO]]" />
+          <figcaption>tartarugas brincando</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="titulo-faq" class="fade-in">
+      <header>
+        <h2 id="titulo-faq">Perguntas Frequentes</h2>
+        <p>Respostas rápidas sobre o projeto e o tema.</p>
+      </header>
+
+      <div class="faq">
+        <!-- TODO: Ajustar perguntas/respostas conforme o tema -->
+        <details>
+          <summary>Tartaruga marinha
+é um réptil? </summary>
+          <p>É da classe dos répteis, da ordem dos quelônios,
+que agrupam todas as formas de tartarugas
+identificadas no mundo. A origem desses animais
+não é bem conhecida, embora se estime que
+tenham surgido há cerca de 100 milhões de anos.
+Existem atualmente 13 famílias de quelônios, com
+75 gêneros e 260 espécies. Destes, há apenas seis
+gêneros com sete espécies marinhas</p>
+          <p></p>
+        
+        </details>
+        <details>
+          <summary>Quantos anos vive
+uma tartaruga marinha?</summary>
+          <p>Nem os pesquisadores do Brasil, nem os de
+outros países têm a resposta correta. Sabe-se
+que a tartaruga marinha é um animal de vida
+longa. Dependendo da espécie, só atinge a
+idade adulta com cerca de 30 anos. Por isso,
+os estudiosos no mundo estimam que uma
+tartaruga marinha pode chegar aos 100 anos.
+        </details>
+        <details>
+          <summary>Onde tem mais desova
+dessas espécies? </summary>
+          <p>Todo o litoral brasileiro pode receber tartarugas marinhas para
+desovar. As tartarugas geralmente procuram locais com areia e
+água do mar mais quentes. Por isso, as principais áreas de
+reprodução ficam no norte do Rio de Janeiro, norte do Espírito
+Santo, e se estendem pelo Nordeste, regiões do litoral
+brasileiro onde as temperaturas são mais altas</p>
+        </details>
+        <details>
+          <summary>Como as tartarugas
+marinhas nascem? 
+</summary>
+          <p></a>s filhotes rompem os ovos após um período de incubação
+que varia de 45 a 60 dias, dependendo da temperatura da
+areia. Em movimentos sincronizados, emergem em conjunto,
+retirando a areia até alcançarem a superfície, e correm em grupo para
+o mar. A saída do ninho acontece quase sempre à noite, estimulada
+pelo resfriamento da areia. Para chegarem ao mar, os filhotes se
+orientam pela luminosidade natural do horizonte marinho. Já nascem
+independentes, mesmo sendo tão pequenos e frágeis, com apenas
+3,5cm a 4cm. Muitos são devorados por predadores, outros morrem
+de fome e doenças naturais. De cada mil filhotes apenas um ou dois
+atingem a idade adulta, em média com 30 anos.
+Como as tartarugas.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo ficam submersas?</summary>
+          <p>Entre 10 e 30 minutos, em média. Quanto mais ativas, menos tempo
+mergulhando. Quando sobem para respirar, ficam na superfície
+menos de dois a três segundos. É o tempo necessário para eliminar
+o CO2 acumulado durante o mergulho e inspirar o oxigênio
+suficiente para o próximo. Mas, se quiserem, as tartarugas podem
+permanecer na superfície por mais tempo, como, por exemplo,
+boiando para se aquecer, se alimentar, se orientar ou copular.
+</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="cta-final" aria-labelledby="titulo-cta" class="fade-in">
+      <header>
+        <h2 id="titulo-cta">Continue explorando</h2>
+        <p>Escolha um caminho para aprender ainda mais.</p>
+      </header>
+      <div class="cta" role="group" aria-label="Call to Action">
+        <a href="#fatos">Aprender mais</a>
+        <a href="#galeria">Ver imagens</a>
+        <a href="#creditos">Baixar material &amp; Fontes</a>
+      </div>
+    </section>
+
+    <!-- CRÉDITOS/FONTES -->
+    <section id="creditos" aria-labelledby="titulo-creditos" class="fade-in">
+      <header>
+        <h2 id="titulo-creditos">Créditos e Fontes</h2>
+        <p>Referências utilizadas neste projeto.</p>
+      </header>
+      <!-- TODO: Inserir links ou nomes das fontes -->
+      <article>
+        <p>[[FONTES_REFERENCIAS]]</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Painel do Chatbot (Aside fixo) -->
+  <aside id="chatPane" role="complementary" aria-label="Painel do chatbot" aria-hidden="true">
+    <div class="chat-header">
+      <strong>Chatbot Demonstrativo</strong>
+      <div>
+        <button id="closeChat" class="icon-btn" aria-label="Fechar chatbot">✖</button>
+      </div>
+    </div>
+    <div class="chat-body" id="chatHistory" aria-live="polite">
+      <!-- Placeholders de histórico -->
+      <div class="msg bot">Olá! Sou um protótipo de chatbot. Como posso ajudar sobre [[TEMA_DO_PROJETO]]?</div>
+      <div class="msg user">Quero saber curiosidades rápidas.</div>
+      <div class="msg bot">Veja a seção “Curiosidades” ou pergunte algo específico!</div>
+    </div>
+    <form class="chat-input" id="chatForm" aria-label="Entrada de mensagem do chatbot">
+      <input id="chatText" type="text" name="q" placeholder="Digite sua mensagem..." aria-label="Escreva sua mensagem" />
+      <button class="icon-btn" type="submit" aria-label="Enviar mensagem">➤</button>
+    </form>
+  </aside>
+
+  <footer class="wrap" role="contentinfo">
+    <p>&copy; <span id="ano"></span> | Projeto: [[TEMA_DO_PROJETO]] — <a href="#topo" id="backToTop">Voltar ao topo</a></p>
+  </footer>
+<script src="script.js"></script>
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+<df-messenger
+  intent="WELCOME"
+  chat-title="ECOBOT"
+  agent-id="6c106d6c-eef7-41db-92b4-5bf82848937e"
+  language-code="pt-br">
+</df-messenger>
+
+<!-- Modal da câmera -->
+<div id="cameraModal" class="modal" aria-hidden="true" style="display:none;">
+  <div class="modal-content">
+    <button id="fecharModal" class="botao-fechar" title="Fechar">❌</button>
+    <h2 class="modal-title">Reconhecimento Facial</h2>
+    <div class="video-wrap">
+      <video id="video" autoplay muted playsinline></video>
+    </div>
+    <div class="controls">
+      <button id="tirarFoto" class="botao-foto" title="Tirar foto">📸</button>
+    </div>
+    <p id="modalStatus" class="modal-status">Aguardando...</p>
+    <canvas id="fotoCanvas" style="display:none;"></canvas>
+  </div>
+</div>
+
+</body>
+</html>
+
